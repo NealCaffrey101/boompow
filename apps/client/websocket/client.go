@@ -38,7 +38,7 @@ func (ws *WebsocketService) SetAuthToken(authToken string) {
 
 func (ws *WebsocketService) StartWSClient(ctx context.Context, workQueueChan chan *serializableModels.ClientMessage, queue *models.RandomAccessQueue) {
 	if ws.AuthToken == "" {
-		panic("Tired to start websocket client without auth token")
+		panic("Tried to start websocket client without auth token")
 	}
 	// Start the websocket connection
 	ws.WS.Dial(ws.URL, http.Header{
@@ -61,7 +61,7 @@ func (ws *WebsocketService) StartWSClient(ctx context.Context, workQueueChan cha
 			var serverMsg serializableModels.ClientMessage
 			err := ws.WS.ReadJSON(&serverMsg)
 			if err != nil {
-				fmt.Printf("Error: ReadJSON %s", ws.WS.GetURL())
+				fmt.Printf("\n Error: ReadJSON %s", ws.WS.GetURL())
 				continue
 			}
 
